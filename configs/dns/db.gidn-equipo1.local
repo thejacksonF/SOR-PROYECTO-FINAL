@@ -1,0 +1,15 @@
+$TTL 3600
+@ IN SOA ns1.gidn-equipo1.local. admin.gidn-equipo1.local. (
+    1 3600 900 604800 3600 )
+@        IN NS     ns1.gidn-equipo1.local.
+@        IN MX 10  mail.gidn-equipo1.local.
+@        IN A      192.168.1.10
+ns1      IN A      192.168.1.10
+servidor IN A      192.168.1.10
+www      IN A      192.168.1.10
+mail     IN A      192.168.1.10
+cloud    IN A      192.168.1.10
+cliente1 IN A      192.168.1.50
+portal   IN CNAME  www
+webmail  IN CNAME  mail
+nube     IN CNAME  cloud

@@ -65,15 +65,20 @@ Forwarders para nombres externos: `8.8.8.8` y `1.1.1.1`.
 | Servicio | Software | Puerto | Estado |
 |---|---|---|---|
 | Acceso remoto | OpenSSH (solo llave Ed25519) | 22/tcp | ✅ |
-| DNS autoritativo | BIND 9.18 (`named`) | 53/tcp, 53/udp | ⏳ Parte 2 |
-| DHCP | Kea (`kea-dhcp4`) | 67/udp | ⏳ Parte 2 |
-| Portal web | Apache httpd + mod_ssl | 80/tcp (redirige) · 443/tcp | ⏳ Parte 2 |
+| DNS autoritativo | BIND 9.18 (`named`) | 53/tcp, 53/udp | ✅ Validado desde el servidor. Pendiente prueba desde el cliente |
+| DHCP | Kea (`kea-dhcp4`) | 67/udp | ⏳ Configuración validada. Pendientes arranque, reserva por MAC y prueba DORA |
+| Portal web | Apache httpd + mod_ssl | 80/tcp (redirige) · 443/tcp | ✅ HTTP 301 y HTTPS 200 verificados desde el servidor. Pendiente prueba desde el cliente |
 | Correo (MTA) | Postfix, solo entrega local | 25/tcp | ⏳ Parte 3 |
 | Buzones (MDA / IMAP) | Dovecot | 143/tcp, 993/tcp | ⏳ Parte 3 |
 | Webmail | Roundcube sobre MariaDB | 443/tcp (`mail.`) | ⏳ Parte 3 |
 | Nube privada | Nextcloud sobre MariaDB | 443/tcp (`cloud.`) | ⏳ Parte 3 |
 | Base de datos | MariaDB 10.11 | 3306/tcp (solo `127.0.0.1`) | ✅ |
 | SMTP saliente | **Bloqueado** (política firewalld `dlp-smtp-salida`) | 25, 465, 587 de salida | ⏳ Parte 3 |
+
+
+**Validación de la Parte 2.** Se comprobaron los registros A y PTR con respuesta autoritativa (`aa`), además de SOA, NS, MX, CNAME y
+la resolución de un dominio externo. El portal respondió con una redirección HTTP `301` y un `200` por HTTPS tras validar el certificado del equipo.
+En `VMnet2` queda pendiente confirmar que el DHCP de VMware esté desactivado y obtener la MAC del cliente para asignarle la reserva `192.168.1.50` y capturar DORA.
 
 ## 4. Estructura del repositorio
 
