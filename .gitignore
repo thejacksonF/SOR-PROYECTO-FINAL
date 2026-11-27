@@ -1,0 +1,7 @@
+# Nunca subir llaves privadas ni secretos
+id_ed25519*
+!*.pub
+*.key
+*.pem
+config.php
+config.inc.php

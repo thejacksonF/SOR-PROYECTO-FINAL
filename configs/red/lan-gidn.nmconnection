@@ -1,0 +1,17 @@
+[connection]
+id=lan-gidn
+uuid=0acf952c-53fc-4f7b-827e-84dce0ff0722
+type=ethernet
+interface-name=ens224
+
+[ethernet]
+
+[ipv4]
+address1=192.168.1.10/24
+method=manual
+
+[ipv6]
+addr-gen-mode=default
+method=disabled
+
+[proxy]
